@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='iso-8859-1'?>
+<credilink_webservice>
+	<consulta_ccf619>
+		<restricoes_bancarias>
+			<quantidade>0</quantidade>
+			<restricao>
+				<mensagem>NAO EXISTEM RESTRICOES BANCARIAS PARA ESSE CPF/CNPJ</mensagem>
+			</restricao>
+		</restricoes_bancarias>
+		
+		
+		<info_restricao>* NADA CONSTA *</info_restricao>
+		<nome_completo>JUDITE MARIA LIMA</nome_completo>
+		<cpf>88462439949</cpf>
+		<filiacao>APARECIDA LIMA^</filiacao>
+		<identidade/>
+		<data_nascimento>18/11/71</data_nascimento>
+		<signo>ESCORPIAO</signo>
+		<codigo_consulta>9574125283</codigo_consulta>
+		<consultas_realizadas>7</consultas_realizadas>
+		
+		
+		<restricoes_lojistas>
+			<quantidade>0</quantidade>
+			<restricao>
+				<mensagem>NAO EXISTEM RESTRICOES LOJISTAS PARA ESSE CPF/CNPJ</mensagem>
+			</restricao>
+		</restricoes_lojistas>
+		
+		
+		<cheques_pre_datados>
+			<quantidade>0</quantidade>
+			<cheque>
+				<emissao/>
+				<banco/>
+				<numerocheque/>
+				<vencimento/>
+				<valor/>
+				<cliente/>
+			</cheque>
+		</cheques_pre_datados>
+		
+		
+		<alertas>
+			<quantidade>0</quantidade>
+			<alerta>
+				<mensagem>NAO EXISTEM ALERTAS PARA ESTE CPF/CNPJ</mensagem>
+			</alerta>
+		</alertas>
+	</consulta_ccf619>
+	
+	
+	<consulta_telefone_proprietario/>
+	
+	
+	<consulta_emails_proprietario>
+		<emails>NULL</emails>
+	</consulta_emails_proprietario>
+	
+	
+	<parentes/>
+	
+	
+	<vizinhos/>
+	
+	
+	<dados_sociedades/>
+	
+	
+	<veiculos/>
+	
+	
+	<obito/>
+	
+	
+	<moradores/>
+	
+	
+	<comercial/>
+	
+	
+	<iptu/>
+	
+	
+	<trabalho>CL-099:ORA-00942: table or view does not exist
+	</trabalho>
+	
+	
+	<consulta_telefone_referencia/>
+	
+	
+	<consulta_bancos>
+		<quantidade>0</quantidade>
+	</consulta_bancos>
+	
+	
+	<consultas_realizadas>
+		<consulta>
+			<codigo_credilink>IBI PROMOTORA-INT COMPLETA(K9 - No.: 9574125283 S/R</codigo_credilink>
+			<datahora>02/12/13 16:55:15</datahora>
+		</consulta>
+		<consulta>
+			<codigo_credilink>NEUROTECH INTEGRACAO(CREDILIN - No.: 7442818692 S/R</codigo_credilink>
+			<datahora>27/11/13 10:29:53</datahora>
+		</consulta>
+		<consulta>
+			<codigo_credilink>NEUROTECH INTEGRACAO(CREDILIN - No.: 7335075826 S/R</codigo_credilink>
+			<datahora>27/11/13 10:28:32</datahora>
+		</consulta>
+		<consulta>
+			<codigo_credilink>NEUROTECH INTEGRACAO(CREDILIN - No.: 2383290352 S/R</codigo_credilink>
+			<datahora>27/11/13 10:28:05</datahora>
+		</consulta>
+		<consulta>
+			<codigo_credilink>IBI PROMOTORA-INT COMPLETA(K9 - No.: 7554283027 S/R</codigo_credilink>
+			<datahora>27/11/13  9:32:04</datahora>
+		</consulta>
+		<consulta>
+			<codigo_credilink>NEUROTECH INTEGRACAO(CREDILIN - No.: 4259058486 S/R</codigo_credilink>
+			<datahora>25/11/13 17:56:56</datahora>
+		</consulta>
+		<consulta>
+			<codigo_credilink>NEUROTECH INTEGRACAO(CREDILIN - No.: 8322637621 S/R</codigo_credilink>
+			<datahora>25/11/13 17:41:34</datahora>
+		</consulta>
+	</consultas_realizadas>
+	
+	
+	<passagem>
+		<consulta>
+			<codigo_credilink>IBI PROMOTORA-INT COMPLETA(K9 - No.: 9574125283 S/R</codigo_credilink>
+			<datahora>02/12/13 16:55:15</datahora>
+		</consulta>
+		<consulta>
+			<codigo_credilink>NEUROTECH INTEGRACAO(CREDILIN - No.: 7442818692 S/R</codigo_credilink>
+			<datahora>27/11/13 10:29:53</datahora>
+		</consulta>
+		<consulta>
+			<codigo_credilink>NEUROTECH INTEGRACAO(CREDILIN - No.: 7335075826 S/R</codigo_credilink>
+			<datahora>27/11/13 10:28:32</datahora>
+		</consulta>
+		<consulta>
+			<codigo_credilink>NEUROTECH INTEGRACAO(CREDILIN - No.: 2383290352 S/R</codigo_credilink>
+			<datahora>27/11/13 10:28:05</datahora>
+		</consulta>
+		<consulta>
+			<codigo_credilink>IBI PROMOTORA-INT COMPLETA(K9 - No.: 7554283027 S/R</codigo_credilink>
+			<datahora>27/11/13  9:32:04</datahora>
+		</consulta>
+		<consulta>
+			<codigo_credilink>NEUROTECH INTEGRACAO(CREDILIN - No.: 4259058486 S/R</codigo_credilink>
+			<datahora>25/11/13 17:56:56</datahora>
+		</consulta>
+		<consulta>
+			<codigo_credilink>NEUROTECH INTEGRACAO(CREDILIN - No.: 8322637621 S/R</codigo_credilink>
+			<datahora>25/11/13 17:41:34</datahora>
+		</consulta>
+	</passagem>
+</credilink_webservice>
