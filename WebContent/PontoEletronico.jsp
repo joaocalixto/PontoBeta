@@ -11,6 +11,7 @@
 
     <!-- Le styles -->
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/jquery.dataTables.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 20px;
@@ -125,16 +126,19 @@
 	      <div class="jumbotron">
 	        <h1 id="localclock">Marketing stuff!</h1>
 	       <!--  <a class="btn btn-large btn-success" href="#">Registrar Hora</a>--> 
+	       <div>
+				<input type="text" id="usuario" placeholder="Digite aqui seu usuario">
+			 </div>
 	       <select id="selectTipoEntrada" name="selectTipoEntrada" style="height: 45px;margin-top: 7px;text-align: justify;font-size:30px;">
-				<option value="Entrada">Entrada</option>
-				<option value="Almoco">Almoço</option>
-				<option value="Volta Almoco">Volta Almoço</option>
-				<option value="Saida">Saida</option>
-			</select> 
+				<option value="ENTRADA">Entrada</option>
+				<option value="ALMOCO">Almoco</option>
+				<option value="VOLTAALMOCO">Volta Almoco</option>
+				<option value="SAIDA">Saida</option>
+			</select>			
 	        <button class="btn btn-large btn-success" type="submit">Registrar Hora</button>
 	        <br/>
 	          <div id="sucessAlert" style="display: none;" class="alert alert-success">
-				<button  class="close" data-dismiss="alert" type="button">×</button>
+				<button  class="close" data-dismiss="alert" type="button">Ã—</button>
 				<strong>Parabens!</strong>
 					Suas horas foram registradas com sucesso.
 		  	 </div>
@@ -145,24 +149,19 @@
       <!-- Example row of columns -->
       <div class="row-fluid">
         <div class="span12">
-          <h2>Relatório</h2>
-          <table class="table">
+          <h2>Relatorio</h2>
+          <table class="table table-striped" id="datatable">
               <thead>
                 <tr>
-                  <th>#</th>
                   <th>Horario</th>
                   <th>Tipo</th>
+                  <th>Usuario</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="tbody">
               
               
-               <c:forEach items="${horarios}" var="horario">
-                <tr>
-                    <td><fmt:formatDate pattern="dd-MM-yyyy" value="${horario.horario}" /></td>
-                    <td><c:out value="${horario.tipoHorario}" /></td>
-                </tr>
-            </c:forEach>
+               
               
               </tbody>
             </table>
@@ -184,14 +183,25 @@
     <script src="js/bootstrap.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jsclock-0.8.min.js"></script>  
+    <script src="js/jquery.dataTables.js"></script>  
     
     <script type="application/javascript">
     $(document).ready(function(){
     	   $("#localclock").jsclock();
+    	   $("#datatable").dataTable();
     	  var msg= "<%=request.getAttribute("msg") %>";
     	  
     	  var horario = <%=request.getAttribute("horarios") %>;
     	  
+    	  $("#tbody").children().remove();
+    	  $.each(horario, function(i, item) {
+    		    
+    		    var linha = "<tr>";
+    		    linha+= "<td>"+item.horario+"</td>";
+    		    linha+= "<td>"+item.tipoHorario+"</td>";
+				linha+="</tr>";                
+            	$("#tbody").append(linha);
+    		});
     	  if(msg == "sucesso"){
     		 $("#sucessAlert").fadeIn("slow");
     	  } else if(msg == "erro"){

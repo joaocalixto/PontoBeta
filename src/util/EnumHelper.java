@@ -11,7 +11,7 @@ public class EnumHelper {
 		
 		for (EnumTipoHorario enumTipoHorario : values) {
 			
-			if(vString.endsWith(enumTipoHorario.toString())){
+			if(vString.equalsIgnoreCase(enumTipoHorario.toString())){
 				return enumTipoHorario;
 			}
 		}

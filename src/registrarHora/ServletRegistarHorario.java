@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import negocio.Horario;
 import util.EnumHelper;
 import util.FileControler;
@@ -44,17 +46,21 @@ public class ServletRegistarHorario extends HttpServlet {
 
 		boolean flagEscrita = FileControler.escreverArquivo(textoPonto,
 				absoluteDiskPath);
-
-		Horario horario = new Horario(new Date(), EnumHelper.getENUM(request
-				.getParameter("selectTipoEntrada")));
-
-		HorarioDAO horarioDAO = new HorarioDAO();
-
-		horarioDAO.inserirHorario(horario);
 		
-		Gson gson = new Gson();
+		String parameter = request.getParameter("selectTipoEntrada");
+		
+		HorarioDAO horarioDAO = new HorarioDAO();
+		if(parameter != null && !parameter.equals("null")){
+			
+			Horario horario = new Horario(new Date(), EnumHelper.getENUM(parameter));
+			horarioDAO.inserirHorario(horario);
+		}
+		
+		Gson v = new Gson();
+		String json = v.toJson(horarioDAO.listarHorarios());
 
-		request.setAttribute("horarios", );
+		request.setAttribute("horarios", json);
+		
 
 		if (flagEscrita) {
 			System.out.println("Arquivo salvo com sucesso");
