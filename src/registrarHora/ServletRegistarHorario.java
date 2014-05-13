@@ -10,11 +10,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.joda.time.DateTime;
+
 import com.google.gson.Gson;
 
+import negocio.EnumTipoHorario;
 import negocio.Horario;
+import util.DateHelper;
 import util.EnumHelper;
 import util.FileControler;
+import util.JsonHelper;
 import util.ServletHelper;
 import dao.HorarioDAO;
 
@@ -34,42 +39,70 @@ public class ServletRegistarHorario extends HttpServlet {
 		doPost(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		Date agora = new Date(System.currentTimeMillis());
-
-		String absoluteDiskPath = getServletContext().getRealPath("");
-
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		String textoPonto = request.getParameter("selectTipoEntrada") + " : "
-				+ sdf.format(agora);
-
-		boolean flagEscrita = FileControler.escreverArquivo(textoPonto,
-				absoluteDiskPath);
+	protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 		
-		String parameter = request.getParameter("selectTipoEntrada");
+		String tipoEntrada = request.getParameter("selectTipoEntrada");
+		String usuario = request.getParameter("usuario");
 		
 		HorarioDAO horarioDAO = new HorarioDAO();
-		if(parameter != null && !parameter.equals("null")){
+		
+		if(tipoEntrada != null && !tipoEntrada.equals("null")){
 			
-			Horario horario = new Horario(new Date(), EnumHelper.getENUM(parameter));
-			horarioDAO.inserirHorario(horario);
+			if(usuario != null && !usuario.equals("null")){
+				
+				Horario horario = new Horario();
+				
+				boolean isNew = false;
+				
+				String formatToDataQuery = DateHelper.formatToDataQuery(new DateTime());
+				Horario horarioDia = horarioDAO.getHorarioDia(formatToDataQuery);
+				
+				if(horarioDia == null) {
+					isNew = true;
+				}else {
+					horario = horarioDia;
+				}
+				
+				EnumTipoHorario enumTipoHorario = EnumHelper.getENUM(tipoEntrada);
+				int ordinal = enumTipoHorario.ordinal();
+				
+				switch (ordinal) {
+				case 0:
+					horario.setHoraEntrada(new DateTime());
+					break;
+				case 1:
+					horario.setHoraAlmoco(new DateTime());
+					break;
+				case 2:
+					horario.setHoraVoltaAlmoco(new DateTime());
+					break;
+				case 3:
+					horario.setHoraSaida(new DateTime());
+					break;
+				default:
+					break;
+				}
+				
+				
+				horario.setDdMMyyyy(formatToDataQuery);
+				horario.setUsuario(usuario);
+				
+				if(!isNew) {
+					horarioDAO.atualizarHorario(formatToDataQuery, horario);
+				}else {
+					horarioDAO.inserirHorario(horario);
+				}
+				
+			}
 		}
 		
-		Gson v = new Gson();
-		String json = v.toJson(horarioDAO.listarHorarios());
+		String json = JsonHelper.jsonToArray(horarioDAO.listarHorarios());
 
 		request.setAttribute("horarios", json);
-		
-
-		if (flagEscrita) {
-			System.out.println("Arquivo salvo com sucesso");
-			request.setAttribute("msg", "Horas Registradas com sucesso!");
-		} else {
-			request.setAttribute("msg", "Erro ao registar horas.");
-		}
 
 		ServletHelper.forward(request, response, "PontoEletronico.jsp");
 	}
+	
+	
 
 }

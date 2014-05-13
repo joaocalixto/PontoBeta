@@ -126,9 +126,10 @@
 	      <div class="jumbotron">
 	        <h1 id="localclock">Marketing stuff!</h1>
 	       <!--  <a class="btn btn-large btn-success" href="#">Registrar Hora</a>--> 
-	       <div>
-				<input type="text" id="usuario" placeholder="Digite aqui seu usuario">
-			 </div>
+	        
+				
+					<input type="text" id="usuario" name="usuario"  autocomplete="on" placeholder="Digite aqui seu usuario" required>
+					<br/>
 	       <select id="selectTipoEntrada" name="selectTipoEntrada" style="height: 45px;margin-top: 7px;text-align: justify;font-size:30px;">
 				<option value="ENTRADA">Entrada</option>
 				<option value="ALMOCO">Almoco</option>
@@ -153,9 +154,12 @@
           <table class="table table-striped" id="datatable">
               <thead>
                 <tr>
-                  <th>Horario</th>
-                  <th>Tipo</th>
+                  <th>Dia</th>
                   <th>Usuario</th>
+                  <th>Entrada</th>
+                  <th>Almoco</th>
+                  <th>Volta Almoco</th>
+                  <th>Saida</th>
                 </tr>
               </thead>
               <tbody id="tbody">
@@ -195,10 +199,13 @@
     	  
     	  $("#tbody").children().remove();
     	  $.each(horario, function(i, item) {
-    		    
     		    var linha = "<tr>";
-    		    linha+= "<td>"+item.horario+"</td>";
-    		    linha+= "<td>"+item.tipoHorario+"</td>";
+    		    linha+= "<td>"+item.dia+"</td>";
+    		    linha+= "<td>"+item.usuario+"</td>";
+    		    linha+= "<td>"+item.horaEntrada+"</td>";
+    		    linha+= "<td>"+item.horaAlmoco+"</td>";
+    		    linha+= "<td>"+item.horaVoltaAlmoco+"</td>";
+    		    linha+= "<td>"+item.horaSaida+"</td>";
 				linha+="</tr>";                
             	$("#tbody").append(linha);
     		});
