@@ -1,8 +1,6 @@
 package registrarHora;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,15 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.joda.time.DateTime;
-
-import com.google.gson.Gson;
-
 import negocio.EnumTipoHorario;
 import negocio.Horario;
+
+import org.joda.time.DateTime;
+
 import util.DateHelper;
 import util.EnumHelper;
-import util.FileControler;
 import util.JsonHelper;
 import util.ServletHelper;
 import dao.HorarioDAO;
@@ -46,6 +42,8 @@ public class ServletRegistarHorario extends HttpServlet {
 		
 		HorarioDAO horarioDAO = new HorarioDAO();
 		
+		//horarioDAO.deleteAll();
+		
 		if(tipoEntrada != null && !tipoEntrada.equals("null")){
 			
 			if(usuario != null && !usuario.equals("null")){
@@ -55,7 +53,7 @@ public class ServletRegistarHorario extends HttpServlet {
 				boolean isNew = false;
 				
 				String formatToDataQuery = DateHelper.formatToDataQuery(new DateTime());
-				Horario horarioDia = horarioDAO.getHorarioDia(formatToDataQuery);
+				Horario horarioDia = horarioDAO.getHorarioDia(formatToDataQuery,usuario);
 				
 				if(horarioDia == null) {
 					isNew = true;

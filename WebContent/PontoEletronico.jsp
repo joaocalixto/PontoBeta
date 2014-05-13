@@ -128,7 +128,7 @@
 	       <!--  <a class="btn btn-large btn-success" href="#">Registrar Hora</a>--> 
 	        
 				
-					<input type="text" id="usuario" name="usuario"  autocomplete="on" placeholder="Digite aqui seu usuario" required>
+					<input type="text" id="usuario" name="usuario" pattern=".{3,25}"  autocomplete="on" placeholder="Digite aqui seu usuario" required>
 					<br/>
 	       <select id="selectTipoEntrada" name="selectTipoEntrada" style="height: 45px;margin-top: 7px;text-align: justify;font-size:30px;">
 				<option value="ENTRADA">Entrada</option>
