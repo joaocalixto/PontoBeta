@@ -1,11 +1,11 @@
 - [ ] Db4o
   - [ ] Pooling
-  - [-] Create, Update, List
+  - [x] Create, Update, List
   - [ ] Report
   - [ ] Log
-- [-] Servlet
-- [-] ControllerPonto
-- [-] MVC
+- [x] Servlet
+- [x] ControllerPonto
+- [x] MVC
 =========
 
 Ponto Eletronico
